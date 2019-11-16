@@ -1,0 +1,40 @@
+1.	A customer has reached out to us that he cannot access our platform running on 45.33.22.50. Customer's complain is as follows:
+•	"Hello, It seems i cannot access http://45.33.22.50/test1"
+Questions I ask:
+Hello, when was the last time you logged in? 
+Where you logged in when the issue presented itself?
+Can you access the internet?
+Assuming customer is technically oriented I will ask if he used the correct port trying to type on the browser.
+Troubleshooting:
+Ping device, If down restart it if not I log in
+Check the logs
+Ping outside of network to check internet connectivity 
+Check the firewall for anything that might refuse access or allow IP to access said device
+Check if all the needed services are running like webserver, customers services etc. if not I investigate when/why it went down through the logs and then start it
+Or the service might be working but its stuck and might need restarting it
+
+
+
+
+
+
+2.	A customer has reached out to us that he cannot access our platform running on 45.33.22.50. Customer's complain is as follows:
+•	"Hello, It seems i cannot access http://45.33.22.50:444/test2. When i access it seems that nothing happens"
+
+Questions I ask:
+
+•	Hello, when was the last time you logged in? 
+•	Where you logged in when the issue presented itself?
+•	Can you access the internet?
+•	Assuming customer is technically oriented I will ask if he used the correct port trying to type on the browser.
+
+Troubleshooting:
+
+•	Ping device, If down restart it if not I log in
+•	Check the logs
+•	Ping outside of network to check internet connectivity 
+•	Check the firewall for anything that might refuse access or allow IP to access said device
+•	Check if all the needed services are running like webserver, customers services etc. if not I investigate when/why it went down through the logs and then start it
+•	Or the service might be working but its stuck and might need restarting it
+
+The 2 questions are similar to each other therefore I would follow almost the same kind of troubleshooting just to confirm that everything is working as intended 
