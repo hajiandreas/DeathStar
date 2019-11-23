@@ -1,0 +1,47 @@
+1.	A customer has reached out to us that he cannot access our platform running on 45.33.22.50. Customer's complain is as follows:
+•	"Hello, It seems i cannot access http://45.33.22.50/test1"
+Questions I ask:
+Hello, when was the last time you logged in? 
+Where you logged in when the issue presented itself?
+Can you access the internet?
+Assuming customer is technically oriented I will ask if he used the correct port trying to type on the browser.
+
+Troubleshooting:
+
+I have accessed  http://45.33.22.50/test1 using port 443 which this confirms that the customer wasn’t using the correct port to connect.
+Prompted with “Completed test 1”
+
+
+
+2.	A customer has reached out to us that he cannot access our platform running on 45.33.22.50. Customer's complain is as follows:
+•	"Hello, It seems i cannot access http://45.33.22.50:444/test2. When i access it seems that nothing happens"
+Troubleshooting:
+I would like to clarify that not being a root user limited my troubleshooting since I couldn’t restart any service or make changes.
+Applying the same logic as Q1 I tried using port 443 to access the site but was hit with an “404 Not found, nginx/1.14.0 (Ubuntu)” error. 
+I would try to restart nginx just to check if that would help the issue.
+Using netstat I can see that port 80 which nginx normally uses is not open or the service is not listening to that port.
+user3@localhost:~$ netstat -an | grep ':80'
+user3@localhost:~$ netstat -an | grep ':443'
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN
+
+------------------------------------------------------------------------------------------------------
+Next, I opened nginx configuration file in editor using
+nano /etc/nginx/sites-enabled/default
+
+Server {
+  listen 443  default_server;
+  location /test1 {
+        proxy_pass http://localhost:5000/test1;
+  }
+
+  root /var/www/html;
+}
+
+This confirms that that the web server has incomplete configuration, but I couldn’t make any changes. 
+
+I also run a port scan using nmap which clearly confirms which ports are open.
+
+Not shown: 998 filtered ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+443/tcp open  https
